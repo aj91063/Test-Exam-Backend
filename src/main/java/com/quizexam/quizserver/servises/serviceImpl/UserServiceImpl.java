@@ -22,18 +22,21 @@ public class UserServiceImpl implements UserService {
 
         User localUser = this.userRepository.findByUserName(user.getUserName());
 
-        if(localUser != null){
-            System.out.println("User already there !! "+localUser.getUserName() );
-            throw new Exception("User already presented !!");
-        }
-        else {
-            //create user
-            for(UserRole ur: userRoles){
-                roleTypeRepository.save(ur.getRole());
-            }
-            user.getUserRoles().addAll(userRoles);
-           localUser = this.userRepository.save(user);
-        }
+      try{
+          if(localUser != null){
+              System.out.println("User already there !! "+localUser.getUserName() );
+          }
+          else {
+              //create user
+              for(UserRole ur: userRoles){
+                  roleTypeRepository.save(ur.getRole());
+              }
+              user.getUserRoles().addAll(userRoles);
+              localUser = this.userRepository.save(user);
+          }
+      }catch (Exception e){
+          e.printStackTrace();
+      }
         return localUser;
     }
 }
