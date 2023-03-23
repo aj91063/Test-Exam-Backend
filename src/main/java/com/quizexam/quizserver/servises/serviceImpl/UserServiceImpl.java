@@ -7,6 +7,8 @@ import com.quizexam.quizserver.repository.UserRepository;
 import com.quizexam.quizserver.servises.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Set;
 @Service
@@ -24,7 +26,8 @@ public class UserServiceImpl implements UserService {
 
       try{
           if(localUser != null){
-              System.out.println("User already there !! "+localUser.getUserName() );
+              System.out.println("User already there !! "+localUser);
+              return localUser;
           }
           else {
               //create user
@@ -39,4 +42,11 @@ public class UserServiceImpl implements UserService {
       }
         return localUser;
     }
+
+    @Override
+    public User getUserByUsername(String userName) {
+        return this.userRepository.findByUserName(userName);
+    }
+
+
 }

@@ -20,15 +20,6 @@ public class User {
     private String phone;
     private String password;
     private boolean enabled = true;
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
     private String userName;
 
     private String profile;
@@ -57,6 +48,13 @@ public class User {
         this.userRoles=userRoles;
     }
 
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
     public Long getId() {
         return id;
     }
