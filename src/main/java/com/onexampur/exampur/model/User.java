@@ -1,4 +1,4 @@
-package com.quizexam.quizserver.model;
+package com.onexampur.exampur.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

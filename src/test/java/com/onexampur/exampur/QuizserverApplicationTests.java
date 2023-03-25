@@ -1,4 +1,4 @@
-package com.quizexam.quizserver;
+package com.onexampur.exampur;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,24 +1,18 @@
-package com.quizexam.quizserver;
+package com.onexampur.exampur;
 
-import com.quizexam.quizserver.model.RoleType;
-import com.quizexam.quizserver.model.User;
-import com.quizexam.quizserver.model.UserRole;
-import com.quizexam.quizserver.servises.UserService;
+import com.onexampur.exampur.servises.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @SpringBootApplication
-public class QuizserverApplication implements CommandLineRunner {
+public class OnexampurApplication implements CommandLineRunner {
 	@Autowired
 	UserService userService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(QuizserverApplication.class, args);
+		SpringApplication.run(OnexampurApplication.class, args);
 	}
 
 	@Override

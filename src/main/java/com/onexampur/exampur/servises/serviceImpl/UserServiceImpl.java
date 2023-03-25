@@ -1,15 +1,14 @@
-package com.quizexam.quizserver.servises.serviceImpl;
+package com.onexampur.exampur.servises.serviceImpl;
 
-import com.quizexam.quizserver.model.User;
-import com.quizexam.quizserver.model.UserRole;
-import com.quizexam.quizserver.repository.RoleTypeRepository;
-import com.quizexam.quizserver.repository.UserRepository;
-import com.quizexam.quizserver.servises.UserService;
+import com.onexampur.exampur.model.User;
+import com.onexampur.exampur.model.UserRole;
+import com.onexampur.exampur.repository.RoleTypeRepository;
+import com.onexampur.exampur.repository.UserRepository;
+import com.onexampur.exampur.servises.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,10 +41,29 @@ public class UserServiceImpl implements UserService {
       }
         return localUser;
     }
-
+     //getting the user by username
     @Override
     public User getUserByUsername(String userName) {
         return this.userRepository.findByUserName(userName);
+    }
+  //deleting user by ID
+    @Override
+    public String deleteUserById(Long userId) {
+        User user= this.userRepository.findById(userId).get();
+        if(user != null) {
+            this.userRepository.deleteById(userId);
+            return "User " +user.getUserName() +" remove successfully";
+        }
+        else {
+            return "User " +user.getUserName() +" not presented";
+        }
+    }
+
+    @Override
+    public List<User> getAllUser() {
+
+        List<User> allUser =  this.userRepository.findAll();
+        return allUser;
     }
 
 
