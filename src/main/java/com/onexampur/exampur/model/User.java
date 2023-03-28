@@ -20,7 +20,7 @@ public class User {
     private String phone;
     private String password;
     private boolean enabled = true;
-    private String userName;
+    private String username;
 
     private String profile;
 
@@ -34,7 +34,7 @@ public class User {
     }
 
     public User(Long id, String firstName, String lastName, String gender, String email,
-                String phone, String password, boolean enabled, String userName, String profile,Set<UserRole> userRoles) {
+                String phone, String password, boolean enabled, String username, String profile,Set<UserRole> userRoles) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,7 +43,7 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.enabled = enabled;
-        this.userName = userName;
+        this.username = username;
         this.profile = profile;
         this.userRoles=userRoles;
     }
@@ -119,12 +119,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Set<UserRole> getUserRoles() {
