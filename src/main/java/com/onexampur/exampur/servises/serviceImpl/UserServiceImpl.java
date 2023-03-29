@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
 
-        User localUser = this.userRepository.findByUserName(user.getUsername());
+        User localUser = this.userRepository.findByUsername(user.getUsername());
 
       try{
           if(localUser != null){
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
      //getting the user by username
     @Override
     public User getUserByUsername(String userName) {
-        return this.userRepository.findByUserName(userName);
+        return this.userRepository.findByUsername(userName);
     }
   //deleting user by ID
     @Override

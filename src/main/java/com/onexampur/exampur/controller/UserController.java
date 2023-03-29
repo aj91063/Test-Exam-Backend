@@ -13,13 +13,14 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
     private UserService userService;
     @PostMapping("/create-user")
     public User createUser(@RequestBody User user) throws Exception {
-
+        user.setProfile("logo.png");
         RoleType role=new RoleType();
         role.setRoleId(56L);
         role.setRoleName("NORMAL");
@@ -50,6 +51,5 @@ public class UserController {
 
         return this.userService.deleteUserById(userId);
     }
-
 
 }
