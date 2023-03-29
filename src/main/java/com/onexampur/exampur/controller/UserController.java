@@ -52,4 +52,11 @@ public class UserController {
         return this.userService.deleteUserById(userId);
     }
 
+    @PutMapping("/{username}")
+    public User updateUser(@PathVariable(value = "username") String username, @RequestBody User user){
+        final User user1 = this.userService.updateUserByUsername(username, user);
+
+        return user1;
+    }
+
 }
