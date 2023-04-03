@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +17,8 @@ import java.util.Set;
 public class OnexampurApplication implements CommandLineRunner {
 	@Autowired
 	UserService userService;
-
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	public static void main(String[] args) {
 		SpringApplication.run(OnexampurApplication.class, args);
 	}
@@ -24,29 +26,29 @@ public class OnexampurApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Starting point");
-//		User user =new User();
-//		user.setFirstName("Karan");
-//		user.setLastName("Jaiswal");
-//		user.setGender("Male");
-//		user.setEmail("aj91063@gmail.com");
-//		user.setPassword("123");
-//		user.setPhone("9695844246");
-//		user.setProfile("default.png");
-//		user.setUsername("aj91063");
-//
-//		RoleType roleType = new RoleType();
-//		roleType.setRoleId(55L);
-//		roleType.setRoleName("ADMIN");
-//
-//		UserRole userRole =	new UserRole();
-//		userRole.setRole(roleType);
-//		userRole.setUser(user);
-//
-//		Set<UserRole> userRoles = new HashSet<>();
-//		userRoles.add(userRole);
-//
-//		 User userCreate = this.userService.createUser(user, userRoles);
-//		System.out.println(userCreate.getUsername());
+		User user =new User();
+		user.setFirstName("Karan");
+		user.setLastName("Jaiswal");
+		user.setGender("Male");
+		user.setEmail("aj91063@gmail.com");
+		user.setPassword(this.bCryptPasswordEncoder.encode("123"));
+		user.setPhone("9695844246");
+		user.setProfile("default.png");
+		user.setUsername("aj91063");
+
+		RoleType roleType = new RoleType();
+		roleType.setRoleId(55L);
+		roleType.setRoleName("ADMIN");
+
+		UserRole userRole =	new UserRole();
+		userRole.setRole(roleType);
+		userRole.setUser(user);
+
+		Set<UserRole> userRoles = new HashSet<>();
+		userRoles.add(userRole);
+
+		 User userCreate = this.userService.createUser(user, userRoles);
+		System.out.println(userCreate.getUsername());
 
 	}
 }
