@@ -1,10 +1,12 @@
 package com.onexampur.exampur.controller;
 
+import com.onexampur.exampur.customException.UserFoundException;
 import com.onexampur.exampur.model.RoleType;
 import com.onexampur.exampur.model.User;
 import com.onexampur.exampur.model.UserRole;
 import com.onexampur.exampur.servises.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +64,11 @@ public class UserController {
         final User user1 = this.userService.updateUserByUsername(username, user);
 
         return user1;
+    }
+
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ue){
+          return (ResponseEntity<?>) ResponseEntity.notFound();
     }
 
 }

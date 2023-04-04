@@ -1,5 +1,6 @@
 package com.onexampur.exampur.servises.serviceImpl;
 
+import com.onexampur.exampur.customException.UserFoundException;
 import com.onexampur.exampur.model.User;
 import com.onexampur.exampur.model.UserRole;
 import com.onexampur.exampur.repository.RoleTypeRepository;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
         try {
             if (localUser != null) {
                 System.out.println("User already there !! " + localUser);
-                return localUser;
+               throw new UserFoundException();
             } else {
                 //create user
                 for (UserRole ur : userRoles) {
