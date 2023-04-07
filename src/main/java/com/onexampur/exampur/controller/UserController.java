@@ -5,6 +5,9 @@ import com.onexampur.exampur.model.RoleType;
 import com.onexampur.exampur.model.User;
 import com.onexampur.exampur.model.UserRole;
 import com.onexampur.exampur.servises.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +26,12 @@ public class UserController {
     private UserService userService;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @ApiOperation(value = "createUser", notes="Create the User",nickname = "")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Server error"),
+            @ApiResponse(code = 404, message = "Service not found"),
+            @ApiResponse(code = 201, message = "Successful Created",
+                    response = UserController.class, responseContainer = "List") })
     @PostMapping("/create-user")
     public User createUser(@RequestBody User user) throws Exception {
         user.setProfile("logo.png");
