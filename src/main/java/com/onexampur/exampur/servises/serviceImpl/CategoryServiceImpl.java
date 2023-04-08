@@ -4,10 +4,12 @@ import com.onexampur.exampur.model.Quize.Category;
 import com.onexampur.exampur.repository.CategoryRepository;
 import com.onexampur.exampur.servises.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired

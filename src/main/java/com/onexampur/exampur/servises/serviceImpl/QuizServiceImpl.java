@@ -4,10 +4,13 @@ import com.onexampur.exampur.model.Quize.Quize;
 import com.onexampur.exampur.repository.QuizRepository;
 import com.onexampur.exampur.servises.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+
+@Service
 public class QuizServiceImpl implements QuizService {
 
     @Autowired
