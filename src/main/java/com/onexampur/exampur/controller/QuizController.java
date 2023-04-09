@@ -17,7 +17,7 @@ public class QuizController {
 
     /* Add Quiz */
     @PostMapping("/addQuiz")
-    public ResponseEntity<?> addQuiz(Quize quize){
+    public ResponseEntity<?> addQuiz( @RequestBody Quize quize){
 
         final Quize saveQuiz = this.quizService.addQuize(quize);
         return ResponseEntity.ok(saveQuiz);
@@ -37,7 +37,7 @@ public class QuizController {
     }
 
     /* Update The Quiz */
-    @PostMapping("/updateQuiz")
+    @PutMapping("/updateQuiz")
     public ResponseEntity<?> updateQuiz(@RequestBody Quize quize){
         return ResponseEntity.ok(this.quizService.updateQuiz(quize));
     }
