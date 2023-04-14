@@ -63,9 +63,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable(value = "userId") Long userId) {
+    public void deleteUser(@PathVariable(value = "userId") Long userId) {
 
-        return this.userService.deleteUserById(userId);
+        this.userService.deleteUserById(userId);
     }
 
     @PutMapping("/{username}")
