@@ -13,6 +13,8 @@ public interface CategoryService {
 
     public Category getCategory(Long categoryId);
 
+    Category getCategoryByTitle(String title);
+
     public  void deleteCategory(Long categoryId);
 
 }

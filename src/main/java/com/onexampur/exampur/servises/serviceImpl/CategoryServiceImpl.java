@@ -35,6 +35,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category getCategoryByTitle(String title) {
+                 return categoryRepository.findByTitle(title);
+    }
+
+    @Override
     public void deleteCategory(Long categoryId) {
         Category category = new Category();
         category.setCid(categoryId);

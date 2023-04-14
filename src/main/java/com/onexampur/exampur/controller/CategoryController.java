@@ -30,6 +30,11 @@ public class CategoryController {
         return ResponseEntity.ok(getCategory);
     }
 
+    @GetMapping("/title/{title}")
+    public ResponseEntity<?> getTitle(@PathVariable("title") String title){
+           return ResponseEntity.ok(this.categoryService.getCategoryByTitle(title));
+    }
+
     /* Get all Categories */
 
     @GetMapping("/allCategories")
