@@ -80,4 +80,9 @@ public class UserController {
           return (ResponseEntity<?>) ResponseEntity.notFound();
     }
 
+    @PutMapping("/enabled/{username}")
+    public User userStatus(@PathVariable(value = "username") String username, @RequestBody User user){
+        return this.userService.userStatus(username, user);
+    }
+
 }

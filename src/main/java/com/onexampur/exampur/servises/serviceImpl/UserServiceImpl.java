@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
                 byUsername.setEmail(user.getEmail());
                 byUsername.setPhone(user.getPhone());
                 byUsername.setGender(user.getGender());
+                //byUsername.setEnabled(user.isEnabled());
                 userRepository.save(byUsername);
 
             }
@@ -87,6 +88,20 @@ public class UserServiceImpl implements UserService {
         }
 
         return byUsername;
+    }
+
+    @Override
+    public User userStatus(String username,User user) {
+         User byUsername = this.userRepository.findByUsername(username);
+        if(byUsername.isEnabled()){
+            byUsername.setEnabled(user.isEnabled());
+        }
+        else{
+            byUsername.setEnabled(user.isEnabled());
+        }
+        userRepository.save(byUsername);
+        return byUsername;
+
     }
 
 
