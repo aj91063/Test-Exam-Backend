@@ -1,5 +1,6 @@
 package com.onexampur.exampur.servises;
 
+import com.onexampur.exampur.model.Quize.Category;
 import com.onexampur.exampur.model.Quize.Quize;
 
 import java.util.Set;
@@ -15,4 +16,5 @@ public interface QuizService {
    Quize getQuiz(Long quizId);
 
    void deleteQuiz(Long quizId);
+    Quize getQuizyByTitle(String title);
 }

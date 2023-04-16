@@ -44,11 +44,14 @@ public class QuizController {
 
     /* Delete Quiz By Id */
     @DeleteMapping("/deleteQuiz/{quizId}")
-    public ResponseEntity<?> deleteQuiz(@PathVariable(value = "quizId", required = true) Long quizId){
+    public void deleteQuiz(@PathVariable(value = "quizId", required = true) Long quizId){
         this.quizService.deleteQuiz(quizId);
-        return ResponseEntity.ok("quiz is delete successfully");
     }
 
+    @GetMapping("/title/{title}")
+    public ResponseEntity<?> getTitle(@PathVariable("title") String title){
+        return ResponseEntity.ok(this.quizService.getQuizyByTitle(title));
+    }
 
 
 
