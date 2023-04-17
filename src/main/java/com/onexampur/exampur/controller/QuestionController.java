@@ -54,10 +54,28 @@ public class QuestionController {
          Set<Question> questions = quiz.getQuestions();
         List list = new ArrayList(questions);
         if(list.size()>Integer.parseInt(quiz.getNumberOfQuestions())){
-            list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()));
+            list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()+1));
         }
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
+    }
+
+
+    @GetMapping("/quiz/all/{quizId}")
+    public ResponseEntity<?> getQuestionOfQuizAdmin(@PathVariable(value = "quizId", required = true) Long quizId){
+        Quize quize =new Quize();
+        quize.setqId(quizId);
+        final Set<Question> questionOfQuiz = this.questionService.getQuestionOfQuiz(quize);
+        return ResponseEntity.ok(questionOfQuiz);
+
+//        Quize quiz = this.quizService.getQuiz(quizId);
+//        Set<Question> questions = quiz.getQuestions();
+//        List list = new ArrayList(questions);
+//        if(list.size()>Integer.parseInt(quiz.getNumberOfQuestions())){
+//            list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()));
+//        }
+//        Collections.shuffle(list);
+//        return ResponseEntity.ok(list);
     }
 
     /* Update Question */
@@ -68,9 +86,8 @@ public class QuestionController {
 
     /* Delete Question */
     @DeleteMapping("/deleteQuestion/{quesId}")
-    public ResponseEntity<?> deleteQuestion(@PathVariable(value = "quesId", required = true) Long quesId){
+    public void deleteQuestion(@PathVariable(value = "quesId", required = true) Long quesId){
         this.questionService.deleteQuestion(quesId);
-        return ResponseEntity.ok("Question deleted successfully");
     }
 
 

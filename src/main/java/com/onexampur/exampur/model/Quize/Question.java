@@ -22,9 +22,12 @@ public class Question{
     private String answer;
     @ManyToOne(fetch = FetchType.EAGER)
     private Quize quize;
+    @Column(length = 5000)
+    private String solution;
 
 
-    public Question(Long quesId, String content, String image, String option1, String option2, String option3, String option4, String answer, Quize quize) {
+    public Question(Long quesId, String content, String image, String option1, String option2,
+                    String option3, String option4, String answer, Quize quize, String solution) {
         this.quesId = quesId;
         this.content = content;
         this.image = image;
@@ -34,6 +37,7 @@ public class Question{
         this.option4 = option4;
         this.answer = answer;
         this.quize = quize;
+        this.solution = solution;
     }
 
     public Question() {
@@ -109,5 +113,13 @@ public class Question{
 
     public void setQuize(Quize quize) {
         this.quize = quize;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

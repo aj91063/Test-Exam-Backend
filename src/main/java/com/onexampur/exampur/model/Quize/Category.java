@@ -14,6 +14,8 @@ public class Category {
     private Long cid;
     @Column(name = "title")
     private String title;
+
+    @Column(length = 5000)
     private String description;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore
