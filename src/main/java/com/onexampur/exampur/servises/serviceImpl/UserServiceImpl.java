@@ -7,6 +7,7 @@ import com.onexampur.exampur.repository.RoleTypeRepository;
 import com.onexampur.exampur.repository.UserRepository;
 import com.onexampur.exampur.servises.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
     public UserRepository userRepository;
     @Autowired
     public RoleTypeRepository roleTypeRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /* Creating User */
     @Override
@@ -75,10 +79,13 @@ public class UserServiceImpl implements UserService {
         final User byUsername = this.userRepository.findByUsername(username);
         try {
             if (byUsername != null) {
-                byUsername.setProfile(user.getProfile());
+               // byUsername.setProfile(user.getProfile());
                 byUsername.setEmail(user.getEmail());
                 byUsername.setPhone(user.getPhone());
-                byUsername.setGender(user.getGender());
+                //byUsername.setGender(user.getGender());
+                byUsername.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+
                 //byUsername.setEnabled(user.isEnabled());
                 userRepository.save(byUsername);
 
